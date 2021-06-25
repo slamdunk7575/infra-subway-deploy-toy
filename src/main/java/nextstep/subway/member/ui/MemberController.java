@@ -18,7 +18,7 @@ import static net.logstash.logback.argument.StructuredArguments.kv;
 public class MemberController {
 
     private static final Logger log = LoggerFactory.getLogger("console");
-    private static final Logger fileLogger = LoggerFactory.getLogger("file");
+    private static final Logger file = LoggerFactory.getLogger("file");
     private static final Logger json = LoggerFactory.getLogger("json");
 
     private MemberService memberService;
@@ -32,7 +32,7 @@ public class MemberController {
         MemberResponse member = memberService.createMember(request);
 
         log.info("회원가입: " + member);
-        fileLogger.info("회원가입: " + member);
+        file.info("회원가입: " + member);
         json.info("{} {} {}",
                 kv("id", member.getId()),
                 kv("email", member.getEmail()),

@@ -15,8 +15,8 @@ import static net.logstash.logback.argument.StructuredArguments.kv;
 @RestController
 public class AuthController {
 
-    private static final Logger log = LoggerFactory.getLogger("console");
-    private static final Logger fileLogger = LoggerFactory.getLogger("file");
+    private static final Logger console = LoggerFactory.getLogger("console");
+    private static final Logger file = LoggerFactory.getLogger("file");
     private static final Logger json = LoggerFactory.getLogger("json");
 
     private AuthService authService;
@@ -29,8 +29,8 @@ public class AuthController {
     public ResponseEntity<TokenResponse> login(@RequestBody TokenRequest request) {
         TokenResponse token = authService.login(request);
 
-        log.info("["+ request.getEmail()+ "] 님이 로그인 하셨습니다.");
-        fileLogger.info("[" +request.getEmail()+ "] 님이 로그인 하셨습니다.");
+        console.info("["+ request.getEmail()+ "] 님이 로그인 하셨습니다.");
+        json.info("[" +request.getEmail()+ "] 님이 로그인 하셨습니다.");
         json.info("{}", kv("loginEmail", request.getEmail()));
 
         return ResponseEntity.ok().body(token);
