@@ -30,7 +30,7 @@ public class AuthController {
         TokenResponse token = authService.login(request);
 
         console.info("["+ request.getEmail()+ "] 님이 로그인 하셨습니다.");
-        json.info("[" +request.getEmail()+ "] 님이 로그인 하셨습니다.");
+        file.info("[" +request.getEmail()+ "] 님이 로그인 하셨습니다.");
         json.info("{}", kv("loginEmail", request.getEmail()));
 
         return ResponseEntity.ok().body(token);
